@@ -20,8 +20,8 @@ public class MainActivity extends Activity {
         @Override
         public void handleMessage(Message msg) {
             // Get the string from the message object and display it in the textview
-            String time = msg.getData().getString("msg");
-            textView.setText(time);
+            String message = msg.getData().getString("msg");
+            textView.setText(message);
         }
     };
 
