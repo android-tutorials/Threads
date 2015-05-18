@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
         @Override
         public void handleMessage(Message msg) {
             // Get the string from the message object and display it in the textview
-            String time = msg.getData().getString("time_now");
+            String time = msg.getData().getString("msg");
             textView.setText(time);
         }
     };
@@ -33,6 +33,19 @@ public class MainActivity extends Activity {
         // Initiate the widgets with their ids
         button = (Button) findViewById(R.id.bt);
         textView = (TextView) findViewById(R.id.tv);
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Thread thread = new Thread(runnable);
 
         // Set an OnClickListener to the button
         button.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +69,7 @@ public class MainActivity extends Activity {
                             Bundle bundle = new Bundle();
 
                             // Put the string in the bundle
-                            bundle.putString("time_now", "Message from the second thread!");
+                            bundle.putString("msg", "Message from the second thread!");
 
                             // Call the setData() method of the message object and pass the bundle as parameter
                             message.setData(bundle);
