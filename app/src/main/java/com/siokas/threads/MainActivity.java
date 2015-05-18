@@ -34,18 +34,6 @@ public class MainActivity extends Activity {
         button = (Button) findViewById(R.id.bt);
         textView = (TextView) findViewById(R.id.tv);
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        Thread thread = new Thread(runnable);
 
         // Set an OnClickListener to the button
         button.setOnClickListener(new View.OnClickListener() {
